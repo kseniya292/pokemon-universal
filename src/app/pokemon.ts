@@ -13,5 +13,5 @@ export class Pokemon {
 
 export class Sprite {
   name: string;
-  imageP
+  imagePath: any;
 }
