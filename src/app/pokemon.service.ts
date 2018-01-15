@@ -24,7 +24,7 @@ export class PokemonService {
     private state: TransferState) { }
 
   listPokemons() {
-    let pokemons = this.state.get(POKEMONS_KEY, null as any);
+    const pokemons = this.state.get(POKEMONS_KEY, null as any);
     if (pokemons) {
       return Observable.of(pokemons);
     }
@@ -43,7 +43,6 @@ export class PokemonService {
         pokemons.push(pokemon);
       });
       this.state.set(POKEMONS_KEY, pokemons as any);
-      console.log('pokemons', pokemons);
       return pokemons;
     });
   } // listPokemons
@@ -58,7 +57,7 @@ export class PokemonService {
       const pokemon = new Pokemon();
       pokemon.name = res.name;
       pokemon.id = res.id;
-      // pokemon.imageurl = `https://rawgit.com/PokeAPI/sprites/master/sprites/pokemon/${pokemon.id}.png`;
+      pokemon.imageurl = `https://rawgit.com/PokeAPI/sprites/master/sprites/pokemon/${pokemon.id}.png`;
 
       res.types.forEach((type) => {
         pokemon.types.push(type.type.name);
@@ -80,7 +79,6 @@ export class PokemonService {
           }
         }
       this.state.set(POKEMON_DETAILS_KEY, pokemon as any);
-      console.log('pokemon', pokemon)
       return pokemon;
     });
   } // getDetails
