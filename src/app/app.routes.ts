@@ -10,6 +10,10 @@ const routes: Routes = [
   {
     path: 'details/:id',
     component: PokemonDetailsComponent
+  },
+  {
+    path: '**',
+    component: PokemonListComponent
   }
 ];
 
